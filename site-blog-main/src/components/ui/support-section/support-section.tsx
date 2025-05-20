@@ -57,7 +57,8 @@ export const SupportSection = () => {
               Receba suporte amigável
             </strong>
             <p className="text-body-sm text-gray-200">
-              Nossa equipe estará sempre pronta para te atender para ajudar no que for preciso.
+              Nossa equipe estará sempre pronta para te atender para ajudar no
+              que for preciso.
             </p>
           </div>
         </div>
