@@ -16,7 +16,7 @@ export const HeroSection = () => {
         <div className="flex flex-col items-center justify-center gap-4 md:items-start lg:items-start">
           
           {/* Título principal da seção */}
-          <h1 className="text-gray-100 text-heading-hg">
+          <h1 className="text-gray-100 text-heading-hg font-sans">
             Venda seus produtos como afiliado em um único lugar
           </h1>
 
