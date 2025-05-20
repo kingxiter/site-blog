@@ -1,8 +1,7 @@
-// Importação de bibliotecas essenciais
 import * as React from "react";
-import { Slot } from "@radix-ui/react-slot"; // Permite substituir o elemento <button> por outro via "asChild"
-import { cva, type VariantProps } from "class-variance-authority"; // Utilizado para criar variantes de classes com Tailwind CSS
-import { cn } from "@/lib/utils"; // Função utilitária para combinar classes condicionalmente
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils"; 
 
 // Definição das variantes do botão com estilos base e modificadores
 const buttonVariants = cva(
@@ -12,16 +11,8 @@ const buttonVariants = cva(
     variants: {
       // Tipos de aparência (cores, estilos)
       variant: {
-        default: "bg-blue-200 text-white hover:bg-blue-300",
-        destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline:
-          "border border-gray-400 bg-gray-700 transition-colors duration-200 hover:text-blue 200 hover:border-blue-200",
-        // Aparecencia botão (final page)
         primary: "bg-blue-200 text-white hover:bg-blue-300 rounded-full",
         secondary: "bg-gray-100 text-gray-800 hover:bg-blue-100 rounded-full",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
       },
       // Tamanhos do botão
       size: {
@@ -33,7 +24,7 @@ const buttonVariants = cva(
     },
     // Valores padrões aplicados se não forem passados como props
     defaultVariants: {
-      variant: "default",
+      variant: "primary",
       size: "default",
     },
   }
