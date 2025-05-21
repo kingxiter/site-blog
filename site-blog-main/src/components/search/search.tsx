@@ -1,16 +1,16 @@
-
 import { cn } from "@/lib/utils";
-import { SearchIcon } from "lucide-react";
+import { CircleX, SearchIcon } from "lucide-react";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
 
 // Componente Search (campo de busca)
 export const Search = () => {
   // Hook do Next para controlar a rota e acessar query params
-  const router = useRouter();
-
   // Extrai o valor da query `q` da URL, que representa a busca atual
-  const query = router.query.q as string;
+  const router = useRouter();
+  const query = (router.query.q as string) ?? "";
+
+  console.log(query);
 
   // Função para tratar o submit do formulário de busca
   const handleSearch = useCallback(
@@ -34,9 +34,16 @@ export const Search = () => {
     });
   };
 
+  const resetSearch = () => {
+    router.push("/blog", undefined, {
+      shallow: true,
+      scroll: false,
+    });
+  };
+
   return (
     // Formulário com evento de submit
-    <form onSubmit={handleSearch} className="relative group">
+    <form onSubmit={handleSearch} className="relative group w-full md:w-60">
       {/* Ícone de busca posicionado à esquerda do campo */}
       <SearchIcon
         className={cn(
@@ -49,9 +56,17 @@ export const Search = () => {
       <input
         type="text"
         placeholder="Buscar" // Placeholder visível enquanto vazio
+        value={query}
         onChange={handleQueryChange} // Atualiza a URL conforme o usuário digita
-        className="h-10 w-72 bg-transparent border border-gray-400 pl-9 text-gray-100 rounded-md text-body-sm outline-none transition-all duration-200 focus-within:border-blue-300 focus-within:ring-1 focus-within:ring-blue-300 placeholder:text-gray-300 placeholder:text-body-sm"
+        className="w-full h-10 md:w-60 bg-transparent border border-gray-400 pl-9 text-gray-100 rounded-md text-body-sm outline-none transition-all duration-200 focus-within:border-blue-300 focus-within:ring-1 focus-within:ring-blue-300 placeholder:text-gray-300 placeholder:text-body-sm"
       />
+      {query && (
+        <CircleX
+          className="absolute w-4 h-4 top-1/2 -translate-y-1/2 right-3 text-gray-300 "
+          onClick={resetSearch} 
+        />
+        //icone X e config de sumir ao clicar
+      )}
     </form>
   );
 };
