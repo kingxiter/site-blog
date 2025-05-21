@@ -2,20 +2,27 @@ import Link from "next/link";
 import Image from "next/image";
 
 type Author = {
-    name: string;
-    avatar: string;
-}
+  name: string;
+  avatar: string;
+};
 
 type PostCardProps = {
-    slug: string;
-    title: string;
-    description: string;
-    image: string;
-    date: string;
-    author: Author;
-}
+  slug: string;
+  title: string;
+  description: string;
+  image: string;
+  date: string;
+  author: Author;
+};
 
-export const PostCard = ({slug, title, description, image, date, author }: PostCardProps ) => {
+export const PostCard = ({
+  slug,
+  title,
+  description,
+  image,
+  date,
+  author,
+}: PostCardProps) => {
   return (
     <Link
       href={`/blog/${slug}`}
