@@ -1,4 +1,4 @@
-import { Search } from '@/components/search';
+import { Search } from "@/components/search";
 
 export default function BlogPage() {
   return (
@@ -16,11 +16,11 @@ export default function BlogPage() {
               Dicas e estratégias para impulsionar seu negócio
             </h1>
           </div>
+          {/* Search */}
+          <Search />
         </div>
       </header>
 
-      {/* Search */}
-        <Search />
       {/* Listagem de posts */}
     </div>
   );
