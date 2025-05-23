@@ -12,6 +12,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Markdown } from "@/components/markdown";
+import { Button } from "@/components/ui/button";
 
 export default function PostPage() {
   const router = useRouter();
@@ -60,11 +61,11 @@ export default function PostPage() {
               </h1>
 
               <Avatar.Container>
-                <Avatar.Image src={post?.author.avatar} alt={post?.title} />
+                <Avatar.Image src={post?.author.avatar} alt={post?.title} size="sm" />
                 <Avatar.Content>
                   <Avatar.Title>{post?.author.name}</Avatar.Title>
                   <Avatar.Description>
-                    Publicado em {""}
+                    Publicado em {" "}
                     <time dateTime={post.date}>{publishedDate}</time>
                   </Avatar.Description>
                 </Avatar.Content>
@@ -75,6 +76,22 @@ export default function PostPage() {
               <Markdown content={post.body.raw} />
             </div>
           </article>
+
+          <aside className="space-y-6">
+            <div className="rounder-lg bg-gray-700 p-4 md:p-6">
+              <h2 className="mb-4 text-heading-gx text-gray-100">Compartilhar</h2>
+              
+              <div className="space-y-3">
+                {[{ key: '1', providerName:'LinkedIn' }].map((provider) => (
+                  <Button
+                  key={provider.key}
+                  variant="outline">
+                  {provider.providerName}
+                  </Button>
+                ))}
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
     </main>
