@@ -17,3 +17,4 @@ export const getStaticProps = (async () => {
     }
   }
 }) satisfies GetStaticProps<BlogListProps>;
+

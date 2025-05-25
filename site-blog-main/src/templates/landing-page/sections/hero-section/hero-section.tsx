@@ -17,7 +17,7 @@ export const HeroSection = () => {
           
           {/* Título principal da seção */}
           <h1 className="text-gray-100 text-heading-hg font-sans">
-            Venda seus produtos como afiliado em um único lugar
+            Sites e aplicativos que falam a linguagem da sua marca
           </h1>
 
           {/* Bloco de benefícios com ícones e texto */}
@@ -27,7 +27,7 @@ export const HeroSection = () => {
               <div className="flex items-center gap-2">
                 <Clock className="text-cyan-100 h-4 w-4" />
                 <span className="text-body-md text-gray-200">
-                  Crie o seu site em menos de 5 minutos
+                  Crie o seu site em menos de 5 minutos!
                 </span>
               </div>
 
@@ -35,7 +35,7 @@ export const HeroSection = () => {
               <div className="flex items-center gap-2">
                 <Store className="text-cyan-100 h-4 w-4" />
                 <span className="text-body-md text-gray-200">
-                  Acompanhe e otimize seu negócio online
+                  Responsivos e prontos para escalar
                 </span>
               </div>
             </div>
@@ -46,14 +46,14 @@ export const HeroSection = () => {
               {/* Botão com ícone e redirecionamento usando asChild */}
               <Button className="rounded-full w-fit" asChild>
                 <Link href="/criar-loja">
-                  Criar loja grátis
+                  Saber mais
                   <ArrowRight />
                 </Link>
               </Button>
 
               {/* Texto auxiliar abaixo do botão */}
               <p className="text-gray-300 text-body-xs">
-                Não precisa de cartão de crédito
+                Sua presença digital em alto nível
               </p>
             </div>
           </div>

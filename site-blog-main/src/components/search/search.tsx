@@ -1,18 +1,18 @@
 import { cn } from "@/lib/utils";
 import { CircleX, SearchIcon } from "lucide-react";
-import { useRouter } from "next/router";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
 
-// Componente Search (campo de busca)
+
 export const Search = () => {
-  // Hook do Next para controlar a rota e acessar query params
-  // Extrai o valor da query `q` da URL, que representa a busca atual
   const router = useRouter();
-  const query = (router.query.q as string) ?? "";
+  const searchParams = useSearchParams();
+  const query = searchParams?.get('q') ??'';
+
 
   console.log(query);
 
-  // Função para tratar o submit do formulário de busca
+ 
   const handleSearch = useCallback(
     (event: React.FormEvent) => {
       event.preventDefault(); // Evita recarregar a página
@@ -28,15 +28,13 @@ export const Search = () => {
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newQuery = event.target.value;
     // Atualiza a URL com o novo valor de forma "shallow" (sem reload de dados) e sem scroll
-    router.push(`/blog?q=${encodeURIComponent(newQuery)}`, undefined, {
-      shallow: true,
+    router.push(`/blog?q=${encodeURIComponent(newQuery)}`, {
       scroll: false,
     });
   };
 
   const resetSearch = () => {
-    router.push("/blog", undefined, {
-      shallow: true,
+    router.push("/blog", {
       scroll: false,
     });
   };
