@@ -1,18 +1,17 @@
 import { cn } from "@/lib/utils";
 import { CircleX, SearchIcon } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback } from "react";
-
+import { useCallback, useEffect, useRef } from "react";
 
 export const Search = () => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const router = useRouter();
   const searchParams = useSearchParams();
-  const query = searchParams?.get('q') ??'';
-
+  const query = searchParams?.get("q") ?? "";
+  const hasQuery = !!searchParams?.has("q");
 
   console.log(query);
 
- 
   const handleSearch = useCallback(
     (event: React.FormEvent) => {
       event.preventDefault(); // Evita recarregar a página
@@ -39,6 +38,12 @@ export const Search = () => {
     });
   };
 
+  useEffect(() => {
+    if (hasQuery) {
+      inputRef.current?.focus();
+    }
+  }, [hasQuery]);
+
   return (
     // Formulário com evento de submit
     <form onSubmit={handleSearch} className="relative group w-full md:w-60">
@@ -52,6 +57,7 @@ export const Search = () => {
 
       {/* Campo de texto para busca */}
       <input
+        ref={inputRef}
         type="text"
         placeholder="Buscar" // Placeholder visível enquanto vazio
         value={query}
@@ -61,7 +67,7 @@ export const Search = () => {
       {query && (
         <CircleX
           className="absolute w-4 h-4 top-1/2 -translate-y-1/2 right-3 text-gray-300 "
-          onClick={resetSearch} 
+          onClick={resetSearch}
         />
         //icone X e config de sumir ao clicar
       )}
