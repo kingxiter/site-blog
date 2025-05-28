@@ -9,7 +9,7 @@ type BlogPostPageProps = {
   }>;
 };
 
-export async function generatedMetadata({
+export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
