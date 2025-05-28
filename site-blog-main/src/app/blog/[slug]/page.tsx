@@ -4,20 +4,19 @@ import { allPosts } from "contentlayer/generated";
 import { PostPage } from "@/templates/blog";
 
 type BlogPostPageProps = {
-  params: Promise<{
-    slug: string;
-  }>;
+  params: { slug: string };
 };
 
-export async function generatedMetadata({
+export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug } = params;
   const post = allPosts.find((post) => post.slug === slug);
 
   if (!post) {
     return {};
   }
+
   return {
     title: post.title,
     description: post.description,
@@ -38,7 +37,7 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const { slug } = await params;
+  const { slug } = params;
   const post = allPosts.find((post) => post.slug === slug);
 
   if (!post) {
